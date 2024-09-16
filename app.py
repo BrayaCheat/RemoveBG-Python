@@ -5,7 +5,7 @@ import io
 
 app = Flask(__name__)
 
-@app.route('/remove-background', methods=['POST'])
+@app.route('/remove', methods=['POST'])
 def remove_background():
     if 'image' not in request.files:
         return jsonify({'error': 'No image file provided'}), 400
@@ -38,4 +38,4 @@ def remove_background():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
