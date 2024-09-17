@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 import io
 import os
 
-load_dotenv()
 app = Flask(__name__)
 
 @app.route('/remove', methods=['POST'])
 def remove_background():
+    load_dotenv()
     if 'image' not in request.files:
         return jsonify({'error': 'No image file provided'}), 400
 
@@ -41,4 +41,5 @@ def remove_background():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=False)
+    port = os.environ.get('PORT', 5000)
+    app.run(host='0.0.0.0', port=port, debug=False)
